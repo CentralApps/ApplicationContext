@@ -8,9 +8,9 @@ class Context
 	protected $accountFactory = null;
 	protected $account = null;
 	
-	public function __construct($server_name, $application_domain, LookupInterface $account_factory=null)
+	public function __construct($server_name, $application_domain, Utility $utility=null, LookupInterface $account_factory=null)
 	{
-		$this->utility = new Utility($dependency_injection_container);
+		$this->utility = (!is_null($utility)) ? $utility : new Utility($dependency_injection_container);
 		$this->accountReference = $this->utility->getAccountReferenceFromServerName($server_name);
 	}
 	

@@ -8,9 +8,9 @@ class Utility
 	protected $dependencyInjectionContainer;
 	protected $reservedAccountNames = array();
 	
-	public function __construct( $dependency_injection_container )
+	public function __construct()
 	{
-		$this->dependencyInjectionContainer = $dependency_injection_container;
+
 	}
 	
 	public function isApplication($server_name)
@@ -22,6 +22,11 @@ class Utility
 	public function getAccountReferenceFromServerName($server_name)
 	{
 		// TODO: implement
+	}
+	
+	public function setReservedAccountNames($reserved_account_names)
+	{
+		$this->reservedAccountNames = $reserved_account_names;
 	}
 	
 	public function isReservedAccountReference( $account_reference )
