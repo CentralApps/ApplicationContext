@@ -8,10 +8,14 @@ class Context
 	protected $accountFactory = null;
 	protected $account = null;
 	
-	public function __construct($server_name, $application_domain, Utility $utility=null, LookupInterface $account_factory=null)
+	public function __construct($server_name, $application_domain, $reserved_names=array('www'), Utility $utility=null, LookupInterface $account_factory=null)
 	{
-		$this->utility = (!is_null($utility)) ? $utility : new Utility($dependency_injection_container);
-		$this->accountReference = $this->utility->getAccountReferenceFromServerName($server_name);
+		$this->accountFactory = $account_factory;
+		$this->utility = (!is_null($utility)) ? $utility : new Utility();
+		$this->utility->setReservedAccountNames($reserved_names);
+		$this->utility->setServerName($server_name);
+		$this->utility->setApplicationDomain($application_domain);
+		$this->accountReference = $this->utility->getAccountReference();
 	}
 	
 	public function isAccountContext()

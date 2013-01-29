@@ -7,21 +7,33 @@ class Utility
 	
 	protected $dependencyInjectionContainer;
 	protected $reservedAccountNames = array();
+	protected $serverName = '';
+	protected $domainName = '';
 	
 	public function __construct()
 	{
 
 	}
 	
-	public function isApplication($server_name)
+	public function setServerName($server_name)
 	{
-		$account_reference = $this->getAccountReferenceFromServerName($server_name);
+		$this->serverName = $server_name;
+	}
+	
+	public function setDomainName($domain_name)
+	{
+		$this->domainName = $domain_name;
+	}
+	
+	public function isApplication()
+	{
+		$account_reference = $this->getAccountReference();
 		return ! $this->isReservedAccountReference($account_reference);
 	}
 	
-	public function getAccountReferenceFromServerName($server_name)
+	public function getAccountReference()
 	{
-		// TODO: implement
+		return str_replace('.' . $this->domainName, '', $this->serverName);
 	}
 	
 	public function setReservedAccountNames($reserved_account_names)
