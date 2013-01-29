@@ -8,7 +8,7 @@ class Context
 	protected $accountFactory = null;
 	protected $account = null;
 	
-	public function __construct($server_name, $application_domain, $reserved_names=array('www'), Utility $utility=null, LookupInterface $account_factory=null)
+	public function __construct($server_name, $application_domain, LookupInterface $account_factory=null, $reserved_names=array('www'), Utility $utility=null)
 	{
 		$this->accountFactory = $account_factory;
 		$this->utility = (!is_null($utility)) ? $utility : new Utility();
