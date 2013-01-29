@@ -6,6 +6,18 @@ For example, if you have the domain mydomain.com and one of your customers logs 
 
 ## Installation
 
+Add the project to your composer.json file
+
+	{
+		"require": {
+        	"mattkirwan/temp-token": "1.0.*"
+    	}
+    }
+    
+Install the project
+
+	php composer.phar update
+
 ## Usage
 
 1. Create an account factory, which implements LookupInterface, this is used to take an account reference and create an account object. Application specific code.
