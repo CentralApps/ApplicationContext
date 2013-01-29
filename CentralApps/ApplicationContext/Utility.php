@@ -43,7 +43,7 @@ class Utility
 	
 	public function isReservedAccountReference( $account_reference )
 	{
-		return in_array($account_reference, $this->reservedAccountNames);
+		return in_array($account_reference, $this->reservedAccountNames) || '' == $account_reference;
 	}
 	
 	public function getAccount($server_name)
