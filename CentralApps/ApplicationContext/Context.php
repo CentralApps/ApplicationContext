@@ -8,6 +8,14 @@ class Context
 	protected $accountFactory = null;
 	protected $account = null;
 	
+	/**
+	 * Constructor
+	 * @param string $server_name the name of the server, typically $_SERVER['SERVER_NAME']
+	 * @param string $application_domain the domain name used by the application
+	 * @param LookupInterface $account_factory the application specific account factory
+	 * @param array $reserved_names an array of reserved subdomains / account names [optional]
+	 * @param Utility $utility optional utility class if we want to inject one [optional]
+	 */
 	public function __construct($server_name, $application_domain, LookupInterface $account_factory=null, $reserved_names=array('www'), Utility $utility=null)
 	{
 		$this->accountFactory = $account_factory;
@@ -18,6 +26,10 @@ class Context
 		$this->accountReference = $this->utility->getAccountReference();
 	}
 	
+	/**
+	 * Based off the server name, check if we are running in account context or not
+	 * @return bool
+	 */
 	public function isAccountContext()
 	{
 		return ! $this->utility->isReservedAccountReference($this->accountReference);
@@ -32,6 +44,10 @@ class Context
 		}
 	}
 	
+	/**
+	 * Check if the account reference is valid
+	 * @return bool
+	 */
 	public function isValidReference()
 	{
 		if($this->isAccountContext() && is_null($this->account)) {
@@ -44,6 +60,11 @@ class Context
 		return true;
 	}
 	
+	/**
+	 * Get the account object related to the account reference
+	 * The account object is looked up using the account factory passed to the class
+	 * @return mixed object if valid account, otherwise null
+	 */
 	public function getAccount()
 	{
 		// TODO: remove duplication between this and the isValidReference method
