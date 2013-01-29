@@ -10,7 +10,7 @@ Add the project to your composer.json file
 
 	{
 		"require": {
-        	"mattkirwan/temp-token": "1.0.*"
+        	"centralapps/application-context": "dev-master"
     	}
     }
     
