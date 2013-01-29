@@ -26,7 +26,7 @@ class Context
 	private function lookupAccount()
 	{
 		try{
-			$this->account = $this->accountFactory->lookupAccountByReference($this->reference);
+			$this->account = $this->accountFactory->lookupSingleAccountByReference($this->reference);
 		} catch(\Exception $e) {
 			throw $e;
 		}

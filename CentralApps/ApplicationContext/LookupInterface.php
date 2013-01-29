@@ -3,5 +3,5 @@ namespace CentralApps\ApplicationContext;
 
 interface LookupInterface
 {
-	public function lookupAccountByReference($reference);
+	public function lookupSingleAccountByReference($reference);
 }
