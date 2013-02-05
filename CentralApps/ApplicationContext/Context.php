@@ -22,7 +22,7 @@ class Context
 		$this->utility = (!is_null($utility)) ? $utility : new Utility();
 		$this->utility->setReservedAccountNames($reserved_names);
 		$this->utility->setServerName($server_name);
-		$this->utility->setApplicationDomain($application_domain);
+		$this->utility->setDomainName($application_domain);
 		$this->accountReference = $this->utility->getAccountReference();
 	}
 	
