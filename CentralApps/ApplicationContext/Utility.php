@@ -33,7 +33,8 @@ class Utility
 	
 	public function getAccountReference()
 	{
-		return str_replace('.' . $this->domainName, '', $this->serverName);
+		$temp = str_replace($this->domainName, '', $this->serverName);
+        return rtrim($temp,'.');
 	}
 	
 	public function setReservedAccountNames($reserved_account_names)
