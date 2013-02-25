@@ -27,6 +27,15 @@ class Context
 	}
 	
 	/**
+	 * Get the application context reference string
+	 * @return String
+	 */
+	public function getApplicationContextReference()
+	{
+		return $this->utility->getAccountReference();
+	}
+	
+	/**
 	 * Based off the server name, check if we are running in account context or not
 	 * @return bool
 	 */
